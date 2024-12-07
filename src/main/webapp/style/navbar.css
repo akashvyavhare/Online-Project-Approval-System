@@ -1,0 +1,39 @@
+@charset "UTF-8";
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        #main {
+            background-color: blueviolet;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space between left and right items */
+            align-items: center; /* Center items vertically */
+            width: 100%;
+            padding: 10px;
+        }
+
+        #ul {
+            list-style-type: none;
+            display: flex; /* Horizontal layout for nav items */
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .nav-item {
+            margin-left: 20px; /* Space between nav items */
+        }
+
+        .nav-link {
+            color: white; /* Ensure the text is visible */
+            text-decoration: none;
+            font-size: 20px; /* Increase font size */
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .nav-item-1 {
+            margin-right: auto; /* Push "Hospital Management" to the left */
+        }
