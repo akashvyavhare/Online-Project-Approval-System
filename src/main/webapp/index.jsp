@@ -11,7 +11,7 @@
 
 <body>
 <%@include file="component/navbar.jsp" %>
-		<h2 style="text-align: center; color: lime;">Welcome To Hospital management System</h2>
+		<h2 style="text-align: center; color: lime;">Welcome To Project Approval System</h2>
 
 </body>
 

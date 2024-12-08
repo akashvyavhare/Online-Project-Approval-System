@@ -2,7 +2,7 @@
         <ul id="ul">
             <!-- Left Side: Hospital Management -->
             <li class="nav-item-1">
-                <a class="nav-link" href="index.jsp">Hospital Management </a>
+                <a class="nav-link" href="index.jsp">Project Approval</a>
             </li>
 
             <!-- Right Side: Login Items -->
