@@ -85,6 +85,7 @@ name
 CRN no
 pass
 dept
+college id
 semester year
 
 - user login 
@@ -97,6 +98,7 @@ name
 teacher id
 password
 dept
+college_id
 
 teacher login
 - teacher id
@@ -110,6 +112,17 @@ admin registration
 - name 
 - college id
 - password 
+
+college
+id 
+name 
+college id
+city
+
+project
+id 
+name
+ppt file
 
 
 ----------------------
