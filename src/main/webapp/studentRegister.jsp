@@ -36,7 +36,7 @@ body {
 	<%@include file="component/navbar.jsp"%>
 	<div id="container">
 		<h2>Student Registration</h2>
-		<form action="#" method="post">
+		<form action="student_register" method="post">
 			<div class="field">
 				<input type="text" placeholder="username" name="username">
 			</div>
