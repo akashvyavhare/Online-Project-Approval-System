@@ -4,27 +4,24 @@ import com.project_approval.dao.StudentDao;
 import com.project_approval.entity.Student;
 
 public class StudentService {
-	
-	public boolean studentLogin(String username , String password) {
-		boolean login =false;
-		
-		
-		
-		
-		
+
+	public boolean studentLogin(String username, String password) {
+		boolean login = false;
+
 		return login;
 	}
-	
-	
-	
-	public int registerStudent(Student student)
-	{
-		int status = 0;
+
+	public String registerStudent(Student student) {
+		String massage = null;
 		StudentDao dao = new StudentDao();
-		dao.studentRegister(student);
-		
-		
-		return status;
+		int status = dao.studentRegister(student);
+		if (status == 1) {
+			massage = "Register successfully";
+		}
+		else {
+			massage = "Something wrong on server";
+		}
+		return massage;
 	}
 
 }

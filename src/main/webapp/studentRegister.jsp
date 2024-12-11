@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.lang.*" %>
 <!DOCTYPE html>
 <html>
 
@@ -36,6 +37,14 @@ body {
 	<%@include file="component/navbar.jsp"%>
 	<div id="container">
 		<h2>Student Registration</h2>
+		<% 
+		String status=(String)session.getAttribute("status");
+		if(status != null)
+		{
+			out.print(status);
+			session.removeAttribute("status");
+		}
+		%>
 		<form action="student_register" method="post">
 			<div class="field">
 				<input type="text" placeholder="username" name="username">

@@ -7,34 +7,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.project_approval.entity.Student;
 import com.project_approval.service.StudentService;
 
 @WebServlet("/student_register")
-public class StudentRegisterServlet extends HttpServlet{
-	
-	 @Override
+public class StudentRegisterServlet extends HttpServlet {
+
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		 String username = req.getParameter("username");
-		 String crn_no = req.getParameter("CRN_NO");
-		 String password = req.getParameter("password");
-		 String department = req.getParameter("department");
-		 String sem_year = req.getParameter("semister_year");
-		 
-		 Student student = new Student();
-		 student.setName(username);
-		 student.setCrn(crn_no);
-		 student.setPassword(password);
-		 student.setDept(department);
-		 student.setSem_year(sem_year);
-		 
-		 StudentService service= new StudentService();
-		 service.registerStudent(student);
-		 
-		 
-	}	
-	
+		String username = req.getParameter("username");
+		String crn_no = req.getParameter("CRN_NO");
+		String password = req.getParameter("password");
+		String department = req.getParameter("department");
+		String sem_year = req.getParameter("semister_year");
+
+		String status = null;
+		HttpSession session = req.getSession();
+
+		Student student = new Student();
+		student.setName(username);
+		student.setCrn(crn_no);
+		student.setPassword(password);
+		student.setDept(department);
+		student.setSem_year(sem_year);
+
+		StudentService service = new StudentService();
+		status = service.registerStudent(student);
+
+		session.setAttribute("status", status);
+
+		resp.sendRedirect("studentRegister.jsp");
+
+	}
 
 }

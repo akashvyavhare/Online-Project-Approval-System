@@ -14,6 +14,7 @@ public class StudentDao {
 	public int studentRegister(Student student)
 	{
 		connection = DBconnection.getDbConnection();
+		int insertStatus = 0 ;
 		
 		String query = "Insert into student_dtl (student_name , crn_no , dept , academic_year , password) values (?,?,?,?,?)";
 		
@@ -25,14 +26,14 @@ public class StudentDao {
 			ps.setString(4, student.getSem_year());
 			ps.setString(5, student.getPassword());
 			
-			ps.execute();
+			insertStatus =ps. executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		
-		return 0;
+		return insertStatus;
 	}
 	
 }
