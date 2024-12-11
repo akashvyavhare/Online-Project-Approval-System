@@ -16,7 +16,7 @@ public class StudentDao {
 		connection = DBconnection.getDbConnection();
 		int insertStatus = 0 ;
 		
-		String query = "Insert into student_dtl (student_name , crn_no , dept , academic_year , password) values (?,?,?,?,?)";
+		String query = "Insert into student_dtl (student_name , crn_no , department , academic_year , password) values (?,?,?,?,?)";
 		
 		try {
 			PreparedStatement ps  = connection.prepareStatement(query);
