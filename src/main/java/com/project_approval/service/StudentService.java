@@ -5,11 +5,14 @@ import com.project_approval.entity.Student;
 
 public class StudentService {
 
-	public boolean studentLogin(String username, String password) {
-		boolean login = false;
+	public Student studentLogin(String username, String password) {
+		Student student = null ;
+		StudentDao dao = new StudentDao();
+		student = dao.loginStudent(username, password);
 
-		return login;
+		return student;
 	}
+	
 
 	public String registerStudent(Student student) {
 		String massage = null;
