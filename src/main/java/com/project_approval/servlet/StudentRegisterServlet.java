@@ -22,7 +22,7 @@ public class StudentRegisterServlet extends HttpServlet {
 		String crn_no = req.getParameter("CRN_NO");
 		String password = req.getParameter("password");
 		String department = req.getParameter("department");
-		String sem_year = req.getParameter("semister_year");
+		String academic_year = req.getParameter("academic_year");
 
 		String status = null;
 		HttpSession session = req.getSession();
@@ -31,8 +31,8 @@ public class StudentRegisterServlet extends HttpServlet {
 		student.setName(username);
 		student.setCrn(crn_no);
 		student.setPassword(password);
-		student.setDept(department);
-		student.setSem_year(sem_year);
+		student.setDepartment(department);
+		student.setAcademic_year(academic_year);
 
 		StudentService service = new StudentService();
 		status = service.registerStudent(student);

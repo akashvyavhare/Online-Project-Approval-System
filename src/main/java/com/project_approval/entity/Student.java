@@ -6,8 +6,8 @@ public class Student {
 	private String crn;
 	private String name;
 	private String password;
-	private String sem_year;
-	private String dept;
+	private String academic_year;
+	private String department;
 	
 
 	public int getId() {
@@ -34,22 +34,22 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getSem_year() {
-		return sem_year;
+	public String getAcademic_year() {
+		return academic_year;
 	}
-	public void setSem_year(String sem_year) {
-		this.sem_year = sem_year;
+	public void setAcademic_year(String academic_year) {
+		this.academic_year = academic_year;
 	}
-	public String getDept() {
-		return dept;
+	public String getDepartment() {
+		return department;
 	}
-	public void setDept(String dept) {
-		this.dept = dept;
+	public void setDepartment(String dept) {
+		this.department = dept;
 	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", crn=" + crn + ", name=" + name + ", password=" + password + ", sem_year="
-				+ sem_year + ", dept=" + dept + "]";
+		return "Student [id=" + id + ", crn=" + crn + ", name=" + name + ", password=" + password + ", academic_year="
+				+ academic_year + ", department=" + department + "]";
 	}
 	
 	

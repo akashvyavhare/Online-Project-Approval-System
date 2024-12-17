@@ -36,7 +36,7 @@ body {
 <body>
 	<%@include file="component/navbar.jsp"%>
 	<div id="container">
-		<h2>Student Registration</h2>
+		<h2>Teacher Registration</h2>
 		<% 
 		String status=(String)session.getAttribute("status");
 		if(status != null)
@@ -45,12 +45,12 @@ body {
 			session.removeAttribute("status");
 		}
 		%>
-		<form action="student_register" method="post">
+		<form action="teacher_register" method="post">
 			<div class="field">
-				<input type="text" placeholder="username" name="username">
+				<input type="text" placeholder="teacher_name" name="teacher_name">
 			</div>
 			<div class="field">
-				<input style="" type="text" placeholder="CRN_NO" name="CRN_NO">
+				<input style="" type="text" placeholder="teacher_id" name="teacher_id">
 			</div>
 			<div class="field">
 				<input type="text" placeholder="password" name="password">
@@ -58,9 +58,7 @@ body {
 			<div class="field">
 				<input type="text" placeholder="department" name="department">
 			</div>
-			<div class="field">
-				<input type="text" placeholder="academic_year" name="academic_year">
-			</div>
+			
 
 			<div class="field">
 				<button type="submit">Register</button>

@@ -22,8 +22,8 @@ public class StudentDao {
 			PreparedStatement ps  = connection.prepareStatement(query);
 			ps.setString(1, student.getName());
 			ps.setString(2, student.getCrn());
-			ps.setString(3, student.getDept());
-			ps.setString(4, student.getSem_year());
+			ps.setString(3, student.getDepartment());
+			ps.setString(4, student.getAcademic_year());
 			ps.setString(5, student.getPassword());
 			
 			insertStatus =ps. executeUpdate();

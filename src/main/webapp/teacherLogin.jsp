@@ -46,6 +46,8 @@ body {
 			<div class="field">
 				<button type="submit">Login</button>
 			</div>
+			
+			<p>Create account <a href="teacherRegister.jsp">click here</a></p>
 		</form>
 	</div>
 </body>
