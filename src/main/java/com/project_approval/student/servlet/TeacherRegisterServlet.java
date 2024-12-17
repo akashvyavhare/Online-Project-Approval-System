@@ -1,4 +1,4 @@
-package com.project_approval.servlet;
+package com.project_approval.student.servlet;
 
 import java.io.IOException;
 
