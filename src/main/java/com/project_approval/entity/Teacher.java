@@ -44,7 +44,7 @@ public class Teacher {
 	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", teacher_name=" + teacher_name + ", teacher_id=" + teacher_id + ", password=" + password +  
+		return "Teacher [id=" + id + ", teacher_name=" + teacher_name + ", teacher_id=" + teacher_id + ", password=" + password +  
 				 " ,department=" + department + "]";
 	}
 	
