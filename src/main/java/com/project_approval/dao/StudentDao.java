@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.project_approval.db.DBconnection;
+import com.project_approval.entity.Project;
 import com.project_approval.entity.Student;
 
 public class StudentDao {
@@ -67,5 +68,48 @@ public class StudentDao {
 
 		return student;
 	}
+	
+	
+	public boolean addNewProject(Project project)
+	{
+		connection = DBconnection.getDbConnection();
+		boolean status= false;
+		
+		String query ="Insert into project_dtl (project_name, project_desc, file_name, acadmic_year, student_id, project_guide, project_group_id) values (?,?,?,?,?,?,?)";
+		
+		try {
+			
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, project.getProject_name());
+			ps.setString(2, project.getProject_desc());
+			ps.setString(3, project.getFile_Name());
+			ps.setString(4, project.getAcadmic_year());
+			ps.setString(5, null);
+			ps.setString(6, null);
+			ps.setString(7, null);
+			
+			int insert = ps.executeUpdate();
+			
+			if(insert>=1)
+			{
+				status= true;
+			}	
+			
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			try {
+			//connection.close();
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		return status;
+	}
+	
 
 }

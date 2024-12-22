@@ -20,8 +20,8 @@ JSP
 Backend --
 JAVA (1.8)
 Maven Project Facet --> Dynamic Web module -->4.0
-Servlet
-JDBC
+Servlet --> HTTP REQUEST HANDLING
+JDBC  -->  INTERACT WITH DATABASE
 
 Database -
 MySQL / Oracle 
@@ -33,7 +33,7 @@ Framework-
 Hibernate
 Spring boot
 Rest API 
-Angular
+Angular/REACT
 
 
 ------------------- 
@@ -126,6 +126,16 @@ ppt file
 
 
 ----------------------
+
+teacher task 
+project approve or reject
+project idea feedback or improvement
+assign group to student 
+
+student task
+add new project 
+view all project 
+
 
 
 

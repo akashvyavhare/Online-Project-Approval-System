@@ -24,10 +24,14 @@ CREATE TABLE `college_dtl` (
 
 
 CREATE TABLE `project_dtl` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `project_name` varchar(45) DEFAULT NULL,
-  `file` varchar(45) DEFAULT NULL,
-  `crn_no` varchar(45) DEFAULT NULL,
+  `file_name` varchar(45) DEFAULT NULL,
+  `student_id` varchar(45) DEFAULT NULL,
+  `project_desc` varchar(45) DEFAULT NULL,
+  `project_guide` varchar(45) DEFAULT NULL,
+  `project_group_id` varchar(45) DEFAULT NULL,
+  `acadmic_year` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ;
 
