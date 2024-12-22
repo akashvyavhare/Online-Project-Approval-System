@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/TeacherLogoutServlet")
+@WebServlet("/teacherLogout")
 public class TeacherLogoutServlet extends HttpServlet {
 
 	@Override
@@ -17,7 +17,7 @@ public class TeacherLogoutServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		session.removeAttribute("teacherObj");
-		resp.sendRedirect("teacherLogout.jsp");
+		resp.sendRedirect("teacherLogin.jsp");
 	}
 
 }
