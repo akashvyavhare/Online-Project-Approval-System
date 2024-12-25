@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.project_approval.db.DBconnection;
 import com.project_approval.entity.Project;
@@ -68,17 +69,15 @@ public class StudentDao {
 
 		return student;
 	}
-	
-	
-	public boolean addNewProject(Project project)
-	{
+
+	public boolean addNewProject(Project project) {
 		connection = DBconnection.getDbConnection();
-		boolean status= false;
-		
-		String query ="Insert into project_dtl (project_name, project_desc, file_name, acadmic_year, student_id, project_guide, project_group_id) values (?,?,?,?,?,?,?)";
-		
+		boolean status = false;
+
+		String query = "Insert into project_dtl (project_name, project_desc, file_name, acadmic_year, student_id, project_guide, project_group_id) values (?,?,?,?,?,?,?)";
+
 		try {
-			
+
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, project.getProject_name());
 			ps.setString(2, project.getProject_desc());
@@ -87,29 +86,50 @@ public class StudentDao {
 			ps.setString(5, null);
 			ps.setString(6, null);
 			ps.setString(7, null);
-			
+
 			int insert = ps.executeUpdate();
-			
-			if(insert>=1)
-			{
-				status= true;
-			}	
-			
-			
-		}
-		catch (Exception e)
-		{
+
+			if (insert >= 1) {
+				status = true;
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			try {
-			//connection.close();
-			}catch (Exception e) {
+				// connection.close();
+			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
 		return status;
 	}
-	
+
+	public ResultSet getAllProposedProjectByStudent(Student student)
+	{
+		ResultSet rs =null;
+
+		
+		try
+		{
+		connection = DBconnection.getDbConnection();
+			
+		String query = "Select * from project_dtl where student_id=?";
+		
+		PreparedStatement ps = connection.prepareStatement(query);
+		
+		ps.setString(1, "1"/*String.valueOf(student.getId())*/);
+		
+		rs =ps.executeQuery();
+		
+		}
+		catch
+		(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return  rs;
+	}
 
 }

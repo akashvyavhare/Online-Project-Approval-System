@@ -46,7 +46,7 @@ body {
 		%>
 		<form action="studentLogin" method="post">
 			<div class="field">
-				<input type="text" placeholder="username" name="username">
+				<input type="text" placeholder="CRN No" name="username">
 			</div>
 			<div class="field">
 				<input style="" type="text" placeholder="password" name="password">

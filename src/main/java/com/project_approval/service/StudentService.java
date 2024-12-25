@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -48,9 +51,9 @@ public class StudentService {
 			if (!newFile.exists()) {
 				newFile.createNewFile();
 			}
-			
+
 			OutputStream os = new FileOutputStream(newFile);
-			
+
 			for (byte data : fiel_data) {
 				os.write(data);
 
@@ -74,5 +77,44 @@ public class StudentService {
 
 		return projectStatus;
 	}
+
+	public List<Project> getProposedProject(Student student)
+	{
+		List<Project> projectsList = new ArrayList<Project>() ;
+
+		Project project;
+		
+		ResultSet rs;
+		
+		try
+		{	
+		StudentDao dao = new StudentDao();
+		
+		rs = dao.getAllProposedProjectByStudent(student);
+		
+		while(rs.next())
+		{
+			project = new Project();
+			
+			project.setProject_name(rs.getString("project_name"));
+			project.setProject_desc(rs.getString("project_desc"));
+			project.setProject_guide(rs.getString("project_guide"));
+			project.setAcadmic_year(rs.getString("acadmic_year"));
+			//project.set(rs.getString(""));
+			
+			
+			
+			projectsList.add(project);
+		}
+		}
+		catch
+		(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return projectsList;
+	}
+	
 
 }
