@@ -36,6 +36,14 @@ body {
 <%@include file="component/navbar.jsp" %>
 	<div id="container">
 		<h2>Teacher Login</h2>
+		<% 
+		String msg = (String)session.getAttribute("msg"); 
+		if(msg!=null)
+		{
+			out.print(msg);
+			session.removeAttribute("msg");
+		}
+		%>
 		<form action="teacherlogin" method="post">
 			<div class="field">
 				<input type="text" placeholder="username" name="username">
