@@ -96,11 +96,15 @@ public class StudentService {
 		{
 			project = new Project();
 			
+			project.setProject_id(rs.getInt("id"));
 			project.setProject_name(rs.getString("project_name"));
 			project.setProject_desc(rs.getString("project_desc"));
-			project.setProject_guide(rs.getString("project_guide"));
+			project.setProject_guide(rs.getString("project_guide_id"));
 			project.setAcadmic_year(rs.getString("acadmic_year"));
-			//project.set(rs.getString(""));
+			project.setFile_Name(rs.getString("file_name"));
+			project.setProject_status(rs.getString("project_status"));
+			project.setProject_Technology(rs.getString("project_technology"));
+			project.setProject_Group(rs.getString("project_group_id"));
 			
 			
 			

@@ -21,7 +21,7 @@
 	<%="Admin Name = " + admin.getUser_name()%>
 	 <div class="nav">
         <a href="#">View_Status</a>
-        <a href="#">Create_Project_Group</a>
+        <a href="CreateProjectGroup.jsp">Create_Project_Group</a>
         
         <a href="#"> Teacher_List</a>
         <a href="#">Student_List</a>

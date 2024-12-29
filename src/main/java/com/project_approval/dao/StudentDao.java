@@ -58,6 +58,7 @@ public class StudentDao {
 				student.setPassword(rs.getString("Password"));
 				student.setDepartment(rs.getString("department"));
 				student.setAcademic_year(rs.getString("academic_year"));
+				student.setProject_group_id(rs.getString("project_group_id"));
 			}
 
 		} catch (SQLException e) {
@@ -114,7 +115,7 @@ public class StudentDao {
 		{
 		connection = DBconnection.getDbConnection();
 			
-		String query = "Select * from project_dtl where student_id=?";
+		String query = "Select * from project_dtl where project_guide_id=?";
 		
 		PreparedStatement ps = connection.prepareStatement(query);
 		
@@ -132,4 +133,13 @@ public class StudentDao {
 		return  rs;
 	}
 
+//	public String getProjectFileName(Student student)
+//	{
+//		String fileName;
+//		
+//		connection= DBconnection.getDbConnection();
+//		
+//		return null;
+//	}
+	
 }

@@ -8,7 +8,27 @@ public class Student {
 	private String password;
 	private String academic_year;
 	private String department;
+	private String project_group_id;
 	
+	
+
+	public Student() {
+		super();
+	}
+	
+	
+	public Student(int id, String crn, String name, String password, String academic_year, String department,
+			String project_group_id) {
+		super();
+		this.id = id;
+		this.crn = crn;
+		this.name = name;
+		this.password = password;
+		this.academic_year = academic_year;
+		this.department = department;
+		this.project_group_id = project_group_id;
+	}
+
 
 	public int getId() {
 		return id;
@@ -46,11 +66,25 @@ public class Student {
 	public void setDepartment(String dept) {
 		this.department = dept;
 	}
+
+	
+	public String getProject_group_id() {
+		return project_group_id;
+	}
+
+
+	public void setProject_group_id(String project_group_id) {
+		this.project_group_id = project_group_id;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", crn=" + crn + ", name=" + name + ", password=" + password + ", academic_year="
-				+ academic_year + ", department=" + department + "]";
+				+ academic_year + ", department=" + department + ", project_group_id=" + project_group_id + "]";
 	}
+
+	
 	
 	
 }

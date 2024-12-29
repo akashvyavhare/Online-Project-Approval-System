@@ -81,7 +81,19 @@ public class StudentNewProjectServlet extends HttpServlet {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		
+		
 
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String project_group_id = req.getParameter("project_group_id");
+		
+		System.out.println(project_group_id);
+		
+		
 	}
 
 }

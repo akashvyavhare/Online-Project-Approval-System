@@ -16,6 +16,12 @@ public class Project {
 	
 	private String file_Name;
 	
+	private String project_Technology;
+	
+	private String project_status;
+	
+	private String project_Group;
+	
 	private byte [] file_data;
 
 	public int getProject_id() {
@@ -75,6 +81,31 @@ public class Project {
 		this.file_data = file_data;
 	}
 
+	public String getProject_Technology() {
+		return project_Technology;
+	}
+
+	public void setProject_Technology(String project_Technology) {
+		this.project_Technology = project_Technology;
+	}
+
+	public String getProject_status() {
+		return project_status;
+	}
+
+	public void setProject_status(String project_status) {
+		this.project_status = project_status;
+	}
+
+	public String getProject_Group() {
+		return project_Group;
+	}
+
+	public void setProject_Group(String project_Group) {
+		this.project_Group = project_Group;
+	}
+
+	
 
 	
 
