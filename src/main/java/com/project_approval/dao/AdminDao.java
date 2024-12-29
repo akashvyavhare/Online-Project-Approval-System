@@ -4,11 +4,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.project_approval.db.DBconnection;
 import com.project_approval.entity.Admin;
+import com.project_approval.entity.Project;
+import com.project_approval.entity.Student;
+import com.project_approval.entity.Teacher;
 
 public class AdminDao {
+	
+	
+	
 
 	Connection connection;
 
@@ -45,7 +53,105 @@ public class AdminDao {
 		System.out.println(admin);
 
 		return admin;
+		
 	
 	}
+	public List<Student> getAllNewRegisterStudent()
+	{
+		List<Student> studentList =  new ArrayList<Student>();
+		Student student;
+		connection = DBconnection.getDbConnection();
+
+		String query = "select * from student_dtl ";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+				student=new Student();
+				
+				student.setId(rs.getInt("id"));
+				student.setName(rs.getString("student_name"));
+				student.setCrn(rs.getString("crn_no"));
+				student.setPassword(rs.getString("password"));
+				student.setAcademic_year(rs.getString("academic_year"));
+				student.setDepartment(rs.getString("department"));
+				student.setProject_group_id(rs.getString("project_group_id"));
+				
+				studentList.add(student);
+				
+			}
+			
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return studentList;	
+	}	
 	
+	
+	public List<Teacher> getAllNewRegisterTeacher()
+	{
+		List<Teacher> teacherList =  new ArrayList<Teacher>();
+		Teacher teacher;
+		connection = DBconnection.getDbConnection();
+
+		String query = "select * from teacher_dtl ";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+				teacher=new Teacher();
+				
+				teacher.setId(rs.getInt("id"));
+				teacher.setTeacher_name(rs.getString("teacher_name"));
+				teacher.setPassword(rs.getString("password"));
+				teacher.setDepartment(rs.getString("department"));
+				teacher.setTeacher_id(rs.getString("teacher_id"));
+				
+				teacherList.add(teacher);
+				
+			}
+			
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return teacherList;	
+		
+	}	
+	
+	public List<Project> getAllCompleteProject(){
+		List<Project> projectList =new ArrayList<Project>();
+		Project project;
+		connection = DBconnection.getDbConnection();
+		String query = "select * from project_dtl where project_status = 'complete'";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ResultSet rs =ps.executeQuery();
+			while (rs.next()) {
+			project=new Project();
+			project.setProject_name(rs.getString("project_name"));
+			project.setProject_desc(rs.getString("project_desc"));
+			project.setAcadmic_year(rs.getString("acadmic_year"));
+			//project.setProject_id(rs.getString("project_group_id"));
+			//project.setProject_guide_id(rs.getString("projetc_guide_id"));
+			//project.setProject_status(rs.getString("project_status"));
+			
+			projectList.add(project);
+			}
+			
+		} 
+		
+		
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(query);
+		System.out.println(projectList);
+		return projectList;
+	}
 }

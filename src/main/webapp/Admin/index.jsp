@@ -1,3 +1,10 @@
+
+<%@page import="com.project_approval.entity.Project"%>
+<%@page import="com.project_approval.entity.Student"%>
+<%@page import="com.project_approval.entity.Teacher"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.project_approval.service.AdminService"%>
 <%@page import="com.project_approval.entity.Admin"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -16,15 +23,19 @@
 		response.sendRedirect("../adminLogin.jsp");
 		return;
 	}
+	AdminService adminService =new AdminService();
+	List<Teacher> teacher =new ArrayList<Teacher>();
+	List<Student>  student = new ArrayList<Student>();
+	List<Project> project = new ArrayList<Project>();
+	teacher = adminService.getAllTeacher();
+	student = adminService.getAllNewRegisterStudentList();
+	project = adminService.getAllCompleteProject();
 	%>
 	<p>Admin dashboard</p>
 	<%="Admin Name = " + admin.getUser_name()%>
 	 <div class="nav">
-        <a href="#">View_Status</a>
-        <a href="CreateProjectGroup.jsp">Create_Project_Group</a>
+
         
-        <a href="#"> Teacher_List</a>
-        <a href="#">Student_List</a>
         <a style="float: right" href="../adminLogout">Logout</a>
     </div>
 
@@ -37,6 +48,44 @@
    
 </head>
 <body>
+<br>
+
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Project Title</th>
+                <th>Project File</th>
+                <th>Project Year</th>
+                <th>Project Guide</th>
+                <th>Project Status</th>
+                
+                <th>Project Tech</th>
+                <th>Project Group</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% for (Project p:project){%>
+        	 <tr>
+                <td><%= p.getProject_name() %></td>
+                <td><%= p.getFile_Name() %></td>
+                <td><%= p.getAcadmic_year() %></td>
+                <td><%= p.getProject_guide() %></td>
+                <td><%  %></td>
+                   
+                <td><% %></td>
+                <td><% %></td>
+                <td><a href="delete_project">DeleteProject</a></td>
+            </tr>
+           
+       <% } %>
+           
+        </tbody>
+    </table>
+</body>
+</html>
+ 
 
 </body>
 </html>
