@@ -29,63 +29,67 @@
 	List<Project> project = new ArrayList<Project>();
 	teacher = adminService.getAllTeacher();
 	student = adminService.getAllNewRegisterStudentList();
-	project = adminService.getAllCompleteProject();
+	project = adminService.getAllNewProposeProject();
 	%>
 	<p>Admin dashboard</p>
 	<%="Admin Name = " + admin.getUser_name()%>
-	 <div class="nav">
+	<div class="nav">
 
-        
-        <a style="float: right" href="../adminLogout">Logout</a>
-    </div>
+		<a style="float: " href="ViewStatus.jsp">ViewStatus</a> 
+		<a style="float: " href="CreateProjectGroup.jsp">CreateProjectGroup</a> 
+		<a style="float: " href="AssignProjectGuide.jsp">AssignProjectGuide</a>
+		 <select name = "teacherList"  id= "teacher list">Teacher List
+		 <option>Maral</option>
+		 </select>
+		  <select name = "StudentList"  id= "student list">Student List
+		 <option> Shendge</option>
+		 </select>
+		<a style="float: right" href="">Logout</a>
+	</div>
 
 	<br>
 	<br>
 	<hr>
-
-	
- 
-   
 </head>
 <body>
-<br>
+	<br>
 
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Project Title</th>
-                <th>Project File</th>
-                <th>Project Year</th>
-                <th>Project Guide</th>
-                <th>Project Status</th>
-                
-                <th>Project Tech</th>
-                <th>Project Group</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        <% for (Project p:project){%>
-        	 <tr>
-                <td><%= p.getProject_name() %></td>
-                <td><%= p.getFile_Name() %></td>
-                <td><%= p.getAcadmic_year() %></td>
-                <td><%= p.getProject_guide() %></td>
-                <td><%  %></td>
-                   
-                <td><% %></td>
-                <td><% %></td>
-                <td><a href="delete_project">DeleteProject</a></td>
-            </tr>
-           
-       <% } %>
-           
-        </tbody>
-    </table>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Project Title</th>
+				<th>Project File</th>
+				<th>Project Year</th>
+				<th>Project Guide</th>
+				<th>Project Status</th>
+
+				<th>Project Tech</th>
+				<th>Project Group</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for (Project p:project){%>
+			<tr>
+				<td><%= p.getProject_name() %></td>
+				<td><%= p.getFile_Name() %></td>
+				<td><%= p.getAcadmic_year() %></td>
+				<td><%= p.getProject_guide() %></td>
+				<td><%= p.getProject_status() %></td>
+
+				<td><%= p.getProject_Technology() %></td>
+				<td><%= p.getProject_Group() %></td>
+				<td><a href="delete_project">DeleteProject</a></td>
+			</tr>
+
+			<% } %>
+
+		</tbody>
+	</table>
 </body>
 </html>
- 
+
 
 </body>
 </html>

@@ -30,7 +30,7 @@
 	<p>Student dashboard</p>
 	<a style="float: right" href="../studentLogout">Logout</a>
 	<%
-	if (!student.getProject_group_id().isEmpty()) {
+	if (student.getProject_group_id()!= null) {
 	%>
 	<a style="float: right; margin-right: 10px;" href="./newProject.jsp">Add
 		New Project</a>

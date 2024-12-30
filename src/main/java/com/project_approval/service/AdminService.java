@@ -43,5 +43,12 @@ public class AdminService {
 		return project;
 	}
 	
-
+	public List<Project> getAllNewProposeProject(){
+		List<Project> project = new ArrayList<Project>();
+		AdminDao adminDao =new AdminDao();
+		project = adminDao.getAllNewProposeProject();
+		System.out.println(project);
+		return project;
+	}
+	
 }
