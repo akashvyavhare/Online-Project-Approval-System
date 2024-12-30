@@ -35,16 +35,44 @@
 	<%="Admin Name = " + admin.getUser_name()%>
 	<div class="nav">
 
-		<a style="float: " href="ViewStatus.jsp">ViewStatus</a> 
-		<a style="float: " href="CreateProjectGroup.jsp">CreateProjectGroup</a> 
-		<a style="float: " href="AssignProjectGuide.jsp">AssignProjectGuide</a>
-		 <select name = "teacherList"  id= "teacher list">Teacher List
-		 <option>Maral</option>
-		 </select>
-		  <select name = "StudentList"  id= "student list">Student List
-		 <option> Shendge</option>
-		 </select>
-		<a style="float: right" href="">Logout</a>
+		<a style="float:" href="ViewStatus.jsp">ViewStatus</a> <a
+			style="float:" href="CreateProjectGroup.jsp">CreateProjectGroup</a> <a
+			style="float:" href="AssignProjectGuide.jsp">AssignProjectGuide</a>
+			
+			 <select name="teacherList" id="teacher list">
+			<option value="Teacher List" >Teacher List:</option>
+			
+				<%
+			if(!teacher.isEmpty()){
+				
+			
+			for(Teacher tchr: teacher){ %>
+			
+			<option value="<%=  tchr.getTeacher_name()%>">
+					<%=  tchr.getTeacher_name()%>
+					</option> 
+			<%}
+			}
+			%>
+			</option>
+
+		</select>
+		
+		
+		 <select name="StudentList" id="student list">
+			<option value="Student List" >Student List:</option>
+			<%if(!student.isEmpty()){
+				for(Student std: student){%>
+				<option value="<%=  std.getName() %>">
+				<%=  std.getName() %>
+				 </option>
+		<% 	}
+			}
+			%>
+			</option>
+           </select>
+		
+		 <a style="float: right" href="">Logout</a>
 	</div>
 
 	<br>
