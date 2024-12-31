@@ -1,3 +1,8 @@
+<%@page import="com.project_approval.entity.Project"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.project_approval.service.AdminService"%>
+<%@page import="com.project_approval.entity.Teacher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,6 +13,21 @@
 </head>
 <body>
 
+ <h3><p>Assign Project Guide</p></h3>
+ 
+ </body>
+ <body>
+<div>
+	 <a style="float: right" href="index.jsp">Back to Admin Desktop</a>
+</div><br><br>
+
+<hr>
+<%
+AdminService adminService =new AdminService();
+List<Project> project = new ArrayList<Project>();
+List<Teacher> teacher =new ArrayList<Teacher>();
+teacher = adminService.getAllTeacher();
+project = adminService.getAllNewProposeProject();  %>
 	 <table>
         <thead>
             <tr>
@@ -24,31 +44,42 @@
             </tr>
         </thead>
         <tbody>
+        <% for (Project p:project){%>
             <tr>
-                <td>Schilder</td>
+                <td><%= p.getProject_name() %></td>
                 
-                <td>2008</td>
-                <td>Zakir Afridi</td>
-                <td>
-                    <select>
-                        <option>Start Working ASAP</option>
-                        <option>Leave Remarks</option>
-                    </select>
-                </td>
+                <td><%= p.getAcadmic_year() %></td>
+                <td><%= p.getProject_guide() %></td>
+                <td><%= p.getProject_status() %></td>
                 <td><input type="text" placeholder="Enter remarks"></td>
-                <td>UX/UI</td>
+                <td><%= p.getProject_Technology() %></td>
                 <td>2</td>
-                <td><button class="download-button">Download</button></td>
+                <td><a
+					href="../downloadFile?project_file_name=<%=p.getFile_Name()%>">Download</a></td>
                 <td>
-                    <select>
-                        <option>Rohini</option>
-                        <option>Kiran</option>
-                    </select>
+                     <select name="teacherList" id="teacher list">
+			<option value="Teacher List" >Teacher List:</option>
+			
+				<%
+			if(!teacher.isEmpty()){
+				
+			
+			for(Teacher tchr: teacher){ %>
+			
+			<option value="<%=  tchr.getTeacher_name()%>">
+					<%=  tchr.getTeacher_name()%>
+					</option> 
+			<%}
+			}
+			%>
+			</option>
+
+		</select>
                 </td>
                 
                 <td><button class="submit-button">Assign</button></td>
             </tr>
-           
+            <% } %>
         </tbody>
     </table>
 

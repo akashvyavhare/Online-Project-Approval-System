@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.project_approval.service.AdminService"%>
+<%@page import="com.project_approval.entity.Project"%>
 <%@page import="com.project_approval.entity.Teacher"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -21,12 +25,19 @@
     <%= "Teacher Name = " + teacher.getTeacher_name() %>
     
     <a style = "float:right" href="../teacherLogout" >Logout</a>
+    
+    <%
+AdminService adminService =new AdminService();
+ List<Project> project = new ArrayList<Project>();
+ project = adminService.getAllNewProposeProject();
+%>	
 <br>
 <br>
 <hr>
     
     <table>
         <thead>
+      
             <tr>
                 <th>Project Title</th>
                 <th>Project File</th>
@@ -40,29 +51,30 @@
             </tr>
         </thead>
         <tbody>
+          <% for (Project p:project){%>
             <tr>
-                <td>Schilder</td>
-                <td><button class="download-button">Download</button></td>
-                <td>2008</td>
-                <td>Zakir Afridi</td>
+                <td><%= p.getProject_name() %></td>
+                <td><a
+					href="../downloadFile?project_file_name=<%=p.getFile_Name()%>">Download</a></td>
+                <td><%= p.getAcadmic_year() %></td>
+                <td><%= p.getProject_guide() %></td>
                 <td>
-                    <select>
-                        <option>Start Working ASAP</option>
-                        <option>Leave Remarks</option>
-                    </select>
+                   <select>
+                   	<option>Approved</option>
+                   		<option>rejected</option>
+                   	<option>Changes suggested</option>
+                   	
+                   </select>
                 </td>
                 <td><input type="text" placeholder="Enter remarks"></td>
-                <td>UX/UI</td>
-                <td>2</td>
+                <td><%= p.getProject_Technology() %></td>
+                <td><%= p.getProject_Group() %></td>
                 <td><button class="submit-button">Submit</button></td>
             </tr>
-           
+           <% } %>
         </tbody>
     </table>
 </body>
 </html>
  
 
-
-</body>
-</html>

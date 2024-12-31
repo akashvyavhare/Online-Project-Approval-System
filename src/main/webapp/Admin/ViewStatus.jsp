@@ -11,7 +11,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	 <h3><p>Project Status</p></h3>
+	 </body>
+	 
+	 <body>
+<div>
+	 <a style="float: right" href="index.jsp">Back to Admin Desktop</a>
+</div><br><br>
 <br>
+<hr>
 <% 
 AdminService adminService =new AdminService();
 List<Project> project = new ArrayList<Project>();
@@ -35,14 +44,14 @@ project = adminService.getAllCompleteProject();
 			<% for (Project p:project){%>
 			<tr>
 				<td><%= p.getProject_name() %></td>
-				<td><%= p.getFile_Name() %></td>
+				<td><a
+					href="../downloadFile?project_file_name=<%=p.getFile_Name()%>">Download</a></td>
 				<td><%= p.getAcadmic_year() %></td>
 				<td><%= p.getProject_guide() %></td>
 				<td><%= p.getProject_status() %></td>
-
 				<td><%= p.getProject_Technology() %></td>
 				<td><%= p.getProject_Group() %></td>
-				<td><a href="delete_project">DeleteProject</a></td>
+				<td><a href="#">Approve/reject</a></td>
 			</tr>
 
 			<% } %>

@@ -39,7 +39,7 @@ public class AdminService {
 		List<Project> project = new ArrayList<Project>();
 		AdminDao adminDao =new AdminDao();
 		project = adminDao.getAllCompleteProject();
-		System.out.println(project);
+		//System.out.println(project);
 		return project;
 	}
 	
@@ -47,7 +47,7 @@ public class AdminService {
 		List<Project> project = new ArrayList<Project>();
 		AdminDao adminDao =new AdminDao();
 		project = adminDao.getAllNewProposeProject();
-		System.out.println(project);
+		//System.out.println(project);
 		return project;
 	}
 	

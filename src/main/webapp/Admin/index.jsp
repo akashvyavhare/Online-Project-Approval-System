@@ -72,7 +72,7 @@
 			</option>
            </select>
 		
-		 <a style="float: right" href="">Logout</a>
+		 <a style="float: right" href="../adminLogout">Logout</a>
 	</div>
 
 	<br>
@@ -101,7 +101,10 @@
 			<% for (Project p:project){%>
 			<tr>
 				<td><%= p.getProject_name() %></td>
-				<td><%= p.getFile_Name() %></td>
+				
+				<td><a
+					href="../downloadFile?project_file_name=<%=p.getFile_Name()%>">Download</a>
+				</td>
 				<td><%= p.getAcadmic_year() %></td>
 				<td><%= p.getProject_guide() %></td>
 				<td><%= p.getProject_status() %></td>
@@ -111,7 +114,7 @@
 				<td><a href="delete_project">DeleteProject</a></td>
 			</tr>
 
-			<% } %>
+			<%} %>
 
 		</tbody>
 	</table>
@@ -119,5 +122,3 @@
 </html>
 
 
-</body>
-</html>

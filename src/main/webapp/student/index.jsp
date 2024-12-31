@@ -102,7 +102,7 @@
 		UtilityDao dao = new UtilityDao();
 		List<Student> gruoupMember = dao.getProjecGroupDetails(id);
 	%>
-	<h4>Project Group Detsils</h4>
+	<h4>Project Group Details</h4>
 	<table>
 		<thead>
 			<tr>

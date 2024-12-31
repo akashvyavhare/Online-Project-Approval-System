@@ -11,6 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <h3><p>Project Group Section</p></h3>
+ </body>
+<body>
+  
+
+<div>
+	 <a style="float: right" href="index.jsp">Back to Admin Desktop</a>
+</div><br><br>
+<hr>
 
 <%
 	Admin admin = (Admin) session.getAttribute("adminObj");

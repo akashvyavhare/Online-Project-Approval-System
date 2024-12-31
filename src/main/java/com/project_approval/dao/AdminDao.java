@@ -166,6 +166,7 @@ public class AdminDao {
 			while (rs.next()) {
 			project=new Project();
 			project.setProject_name(rs.getString("project_name"));
+			project.setFile_Name(rs.getString("file_name"));
 			project.setProject_desc(rs.getString("project_desc"));
 			project.setAcadmic_year(rs.getString("acadmic_year"));
 			project.setProject_Group(rs.getString("project_group_id"));
@@ -182,8 +183,7 @@ public class AdminDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(query);
-		System.out.println(projectList);
+		
 		return projectList;
 	}
 }
