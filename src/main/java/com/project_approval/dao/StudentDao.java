@@ -106,40 +106,70 @@ public class StudentDao {
 		return status;
 	}
 
-	public ResultSet getAllProposedProjectByStudent(Student student)
-	{
-		ResultSet rs =null;
+	public ResultSet getAllProposedProjectByStudent(Student student) {
+		ResultSet rs = null;
 
-		
-		try
-		{
-		connection = DBconnection.getDbConnection();
-			
-		String query = "Select * from project_dtl where project_guide_id=?";
-		
-		PreparedStatement ps = connection.prepareStatement(query);
-		
-		ps.setString(1, "1"/*String.valueOf(student.getId())*/);
-		
-		rs =ps.executeQuery();
-		
-		}
-		catch
-		(Exception e)
-		{
+		try {
+			connection = DBconnection.getDbConnection();
+
+			String query = "Select * from project_dtl where project_guide_id=?";
+
+			PreparedStatement ps = connection.prepareStatement(query);
+
+			ps.setString(1, "1"/* String.valueOf(student.getId()) */);
+
+			rs = ps.executeQuery();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return  rs;
+
+		return rs;
 	}
 
-//	public String getProjectFileName(Student student)
-//	{
-//		String fileName;
-//		
-//		connection= DBconnection.getDbConnection();
-//		
-//		return null;
-//	}
-	
+	public int updateProjectDetails(Project project) {
+		connection = DBconnection.getDbConnection();
+		String query = "update project_dtl set project_name=?, file_name=?, project_desc=?, acadmic_year=?, project_technology=? where id=?";
+		int update = 0;
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, project.getProject_name());
+			ps.setString(2, project.getFile_Name());
+			ps.setString(3, project.getProject_desc());
+			ps.setString(4, project.getAcadmic_year());
+			ps.setString(5, project.getProject_Technology());
+			ps.setInt(6, project.getProject_id());
+
+			update = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return update;
+	}
+
+	public Project getProjectDetailsById(int id) {
+		connection = DBconnection.getDbConnection();
+		Project project = null;
+		String query = "select * from project_dtl where id = ?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				project = new Project();
+				project.setProject_id(rs.getInt("id"));
+				project.setProject_name(rs.getString("project_name"));
+				project.setProject_desc(rs.getString("project_desc"));
+				project.setAcadmic_year(rs.getString("acadmic_year"));
+				project.setProject_Technology(rs.getString("project_technology"));
+
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return project;
+	}
+
 }

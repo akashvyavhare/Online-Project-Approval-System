@@ -6,21 +6,43 @@ import java.nio.file.Paths;
 
 import javax.servlet.http.Part;
 
+import com.project_approval.entity.Project;
+
 public class ProjectApprovalUitility {
 
-	public byte[] getFileStream(Part part) {
-		return null;
+	public static byte[] getFileStream(Part part) {
+		InputStream in = null;
+		byte[] filedata = null;
+		try {
+
+			in = part.getInputStream();
+			filedata = new byte[in.available()];
+			in.read(filedata);
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return filedata;
 	}
 
 	public static String getFilePath() {
-		
-		String docDirectoryPath= "";
+
+		String docDirectoryPath = "";
 		try {
 
 			File[] fileRoot = File.listRoots();
-			
-		 docDirectoryPath = fileRoot[0]  + "Online-Project-Approval-System" + File.separator + "ProjectUploadFiles"+File.separator;
-	
+
+			docDirectoryPath = fileRoot[0] + "Online-Project-Approval-System" + File.separator + "ProjectUploadFiles"
+					+ File.separator;
+
 			File file = new File(docDirectoryPath);
 			if (!file.exists()) {
 				file.mkdirs();
@@ -28,19 +50,23 @@ public class ProjectApprovalUitility {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return docDirectoryPath;
 	}
 
-	public static void main(String[] args) {
-
-//		System.out.println(getFilePath());
-//		
-//		File file = new File(getFilePath());
-//		
-//		System.out.println(!file.exists());
-//
-
+	public boolean uploadFile(Project project, String userCRN) {
 		
+		boolean uploadStatus = false;
+		File file = new File(ProjectApprovalUitility.getFilePath() + File.separator + project.getFile_Name());
+		try (OutputStream os =new FileOutputStream(file)){
+				os.write(project.getFile_data());
+				uploadStatus=true;
+
+		} catch (Exception e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
+		return uploadStatus;
 	}
+
 }

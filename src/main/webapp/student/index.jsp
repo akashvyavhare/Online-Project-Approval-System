@@ -18,10 +18,10 @@
 		response.sendRedirect("../studentLogin.jsp");
 		return;
 	}
-	String msg = (String) session.getAttribute("newProjectMessage");
+	String msg = (String) session.getAttribute("statusMsg");
 	if (msg != null) {
 		out.print(msg);
-		session.removeAttribute("newProjectMessage");
+		session.removeAttribute("statusMsg");
 	}
 
 	StudentService service = new StudentService();
@@ -85,6 +85,9 @@
 				<td><%=project.getFile_Name()%></td>
 				<td><a
 					href="../downloadFile?project_id=<%=project.getProject_id()%>&project_group_id=<%=project.getProject_Group()%>&project_file_name=<%=project.getFile_Name()%>">Download</a>
+				</td>
+				<td><a
+					href="newProject.jsp?id=<%=project.getProject_id()%>">Edit</a>
 				</td>
 			</tr>
 			<%
