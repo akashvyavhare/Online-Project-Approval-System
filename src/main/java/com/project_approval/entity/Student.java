@@ -9,6 +9,7 @@ public class Student {
 	private String academic_year;
 	private String department;
 	private String project_group_id;
+
 	
 	
 
@@ -67,7 +68,6 @@ public class Student {
 		this.department = dept;
 	}
 
-	
 	public String getProject_group_id() {
 		return project_group_id;
 	}
@@ -82,8 +82,11 @@ public class Student {
 	public String toString() {
 		return "Student [id=" + id + ", crn=" + crn + ", name=" + name + ", password=" + password + ", academic_year="
 				+ academic_year + ", department=" + department + ", project_group_id=" + project_group_id + "]";
+
 	}
 
+	
+	
 	
 	
 	
