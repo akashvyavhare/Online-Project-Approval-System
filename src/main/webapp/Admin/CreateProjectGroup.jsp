@@ -1,5 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.project_approval.service.AdminService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="com.project_approval.entity.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +11,37 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<%
+	Admin admin = (Admin) session.getAttribute("adminObj");
+	if (admin == null) {
+		response.sendRedirect("../adminLogin.jsp");
+		return;
+	}
+	AdminService adminService =new AdminService();
+	List<Student> student =new ArrayList<Student>();
+	student = adminService.getAllNewRegisterStudentList();
+		
+	%>
 <div class="container">
 		<h3>Create Project Group</h3>
 		<div class="form-group">
-			<label>Student List:</label><br> <input type="checkbox"
+			<label>Student List:</label><br> 
+			
+			<%
+			if(!student.isEmpty()){
+				
+			
+			for(Student std: student){
+				%>	
+				<input type="checkbox"
 				id="student1" name="students" value="Student 1"> <label
-				for="student1"> Student 1</label><br> <input type="checkbox"
-				id="student2" name="students" value="Student 2"> <label
-				for="student2"> Student 2</label><br> <input type="checkbox"
-				id="student3" name="students" value="Student 3"> <label
-				for="student3"> Student 3</label>
+				for="student1"> <%= std.getName() %></label><br>
+			<%
+			}
+			}
+			%>
+			
 		</div>
 
 		<div class="form-group">

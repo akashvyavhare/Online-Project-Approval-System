@@ -73,9 +73,12 @@ public class StudentDao {
 
 	public boolean addNewProject(Project project) {
 		connection = DBconnection.getDbConnection();
+
 		boolean status = false;
 
-		String query = "Insert into project_dtl (project_name, project_desc, file_name, acadmic_year, student_id, project_guide, project_group_id) values (?,?,?,?,?,?,?)";
+		
+		String query ="Insert into project_dtl (project_name, project_desc, file_name, acadmic_year,  project_guide_id, project_group_id) values (?,?,?,?,?,?)";
+		
 
 		try {
 
@@ -86,8 +89,8 @@ public class StudentDao {
 			ps.setString(4, project.getAcadmic_year());
 			ps.setString(5, null);
 			ps.setString(6, null);
-			ps.setString(7, null);
 
+			
 			int insert = ps.executeUpdate();
 
 			if (insert >= 1) {
