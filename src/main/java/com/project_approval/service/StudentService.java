@@ -119,6 +119,33 @@ public class StudentService {
 		
 		return projectsList;
 	}
-	
 
+	public String updateProjectDetails(Project project)
+	{
+		int updateStatus =0;
+		String statusMsg = "Fail To Update Details";
+		StudentDao dao = new StudentDao();
+		ProjectApprovalUitility projectApprovalUitility = new ProjectApprovalUitility();
+		boolean fileUploadStatus = projectApprovalUitility.uploadFile(project, null);
+		if(fileUploadStatus)
+		{
+				updateStatus= dao.updateProjectDetails(project);
+				statusMsg="Project File Update Details, Issue in other details";
+		}
+		
+		if(updateStatus==1) {
+			
+			statusMsg="Project Updated";
+		}
+		return statusMsg;
+	}
+
+	public Project getProjectById(String id)
+	{
+		
+		Project project= new StudentDao().getProjectDetailsById(Integer.parseInt(id));
+		
+		return project;
+	}
+	
 }

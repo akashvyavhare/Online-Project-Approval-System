@@ -1,3 +1,5 @@
+<%@page import="com.project_approval.entity.Project"%>
+<%@page import="com.project_approval.service.StudentService"%>
 <%@page import="com.project_approval.entity.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -23,15 +25,17 @@
 		response.sendRedirect("../studentLogin.jsp");
 		return;
 	}
+	String project_id = request.getParameter("id");
 	%>
 	<%="Student Name = " + student.getName()%>
 	<a style="float: right" href="../studentLogout">Logout</a>
 
 	<a style="float: right; padding-right: 10px;" href="index.jsp">Dashboard</a>
+	<%
+	if (project_id == null) {
+	%>
 	<div style="text-align: center;">
-		<h1>
-			Add New Project
-			<h1>
+		<h1>Add New Project</h1>
 	</div>
 	<br>
 	<hr>
@@ -81,6 +85,72 @@
 
 		</form>
 	</div>
+
+	<%
+	} else {
+
+	Project project = new StudentService().getProjectById(project_id);
+	out.print(project.getProject_id());
+	%>
+
+	<div style="text-align: center;">
+		<h1>Edit Project</h1>
+	</div>
+	<br>
+	<hr>
+
+	<div class="form">
+
+		<form action="../updateproject" method="post"
+			enctype="multipart/form-data">
+			<input type="hidden" name="pid" value="1">
+			<div class="element">
+				<br> <br> <br> <label>Project Name</label> <input
+					type="text" name="projectname"
+					value="<%=project.getProject_name()%>">
+			</div>
+
+			<div class="element el">
+				<br> <br> <br> <label>Project Description</label> <input
+					type="text" name="projectdesc"
+					value="<%=project.getProject_desc()%>">
+			</div>
+
+			<div class="element">
+				<br> <br> <br> <label>Acadmic year</label> <input
+					type="text" name="acadmicyear"
+					value="<%=project.getAcadmic_year()%>">
+			</div>
+
+			<div class="element el">
+				<br> <br> <br> <label>Choose Guide</label> <select
+					name="guide">
+					<option value="a">a</option>
+					<option value="b">b</option>
+				</select>
+
+			</div>
+			<div class="element">
+				<br> <br> <br> <label>Project Tech</label> <select
+					name="project_tech">
+					<option>ML</option>
+					<option>WEB Technology</option>
+					<option>Robotics</option>
+				</select>
+			</div>
+
+			<div class="element">
+				<br> <br> <br> <label>Upload File</label> <input
+					type="file" name="file">
+			</div>
+			<br> <br> <br>
+			<button type="submit">Update</button>
+
+		</form>
+	</div>
+	<%
+	}
+	%>
 
 </body>
 </html>
