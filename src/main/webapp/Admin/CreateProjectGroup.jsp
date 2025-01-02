@@ -14,6 +14,7 @@
 
 <%
 	Admin admin = (Admin) session.getAttribute("adminObj");
+	String ststusMsg =(String)session.getAttribute("statusMsg");
 	if (admin == null) {
 		response.sendRedirect("../adminLogin.jsp");
 		return;
@@ -25,7 +26,18 @@
 	%>
 <div class="container">
 		<h3>Create Project Group</h3>
+		<%if(ststusMsg!=null)
+			{
+			out.print(ststusMsg);
+			session.removeAttribute("statusMsg");
+			}
+			%>
 		<div class="form-group">
+		<form action="../createProjectGroup" method="post">
+		<div class="form-group">
+			<label for="groupName">Group Name:</label> <input type="text"
+			     name="groupName" placeholder="Enter group name">
+		</div>
 			<label>Student List:</label><br> 
 			
 			<%
@@ -34,22 +46,16 @@
 			
 			for(Student std: student){
 				%>	
-				<input type="checkbox"
-				id="student1" name="students" value="Student 1"> <label
+				<input type="checkbox" name="students_list" value="<%=std.getCrn()%>"> <label
 				for="student1"> <%= std.getName() %></label><br>
 			<%
 			}
 			}
 			%>
-			
+			<button type="submit">Create Group</button>
+			</form>
 		</div>
 
-		<div class="form-group">
-			<label for="groupName">Group Name:</label> <input type="text"
-				id="groupName" name="groupName" placeholder="Enter group name">
-		</div>
-
-		<button type="button" onclick="createGroup()">Create Group</button>
 	</div>
 
 </body>

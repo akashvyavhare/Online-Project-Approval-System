@@ -51,4 +51,17 @@ public class AdminService {
 		return project;
 	}
 	
+	public String createProjectGroup(String []student_list, String groupName){
+		String msg="Fail to create Group";
+		
+		boolean isCreated = new AdminDao().createNewProjectGroup(student_list, groupName);
+		
+		if(isCreated)
+		{
+			msg="Student Group Is Created";
+		}
+		
+		return msg;
+	}
+	
 }

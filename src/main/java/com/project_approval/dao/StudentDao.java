@@ -174,5 +174,27 @@ public class StudentDao {
 		}
 		return project;
 	}
+	
+	
+	public int getStudentGroupId(int Student_id)
+	{
+		connection = DBconnection.getDbConnection();
+		int studentGroupId = 0;
+		String query = "Select project_group_id from student_dtl where id=?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, Student_id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next())
+			{
+				studentGroupId = rs.getInt("project_group_id"); 
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return studentGroupId;
+	}
 
 }

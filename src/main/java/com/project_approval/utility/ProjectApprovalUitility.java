@@ -54,7 +54,7 @@ public class ProjectApprovalUitility {
 		return docDirectoryPath;
 	}
 
-	public boolean uploadFile(Project project, String userCRN) {
+	public boolean uploadFile(Project project, String studentGroupId) {
 		
 		boolean uploadStatus = false;
 		File file = new File(ProjectApprovalUitility.getFilePath() + File.separator + project.getFile_Name());
