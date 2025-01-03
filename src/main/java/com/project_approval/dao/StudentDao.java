@@ -77,7 +77,7 @@ public class StudentDao {
 		boolean status = false;
 
 		
-		String query ="Insert into project_dtl (project_name, project_desc, file_name, acadmic_year,  project_guide_id, project_group_id) values (?,?,?,?,?,?)";
+		String query ="Insert into project_dtl (project_name, project_desc, file_name, acadmic_year, project_group_id,project_technology) values (?,?,?,?,?,?)";
 		
 
 		try {
@@ -87,8 +87,8 @@ public class StudentDao {
 			ps.setString(2, project.getProject_desc());
 			ps.setString(3, project.getFile_Name());
 			ps.setString(4, project.getAcadmic_year());
-			ps.setString(5, null);
-			ps.setString(6, null);
+			ps.setString(5, project.getProject_Group());
+			ps.setString(6, project.getProject_Technology());
 
 			
 			int insert = ps.executeUpdate();
@@ -99,27 +99,21 @@ public class StudentDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				// connection.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		}
+		} 
 		return status;
 	}
 
-	public ResultSet getAllProposedProjectByStudent(Student student) {
+	public ResultSet getAllProposedProjectByStudent(String  projectGroupId) {
 		ResultSet rs = null;
 
 		try {
 			connection = DBconnection.getDbConnection();
 
-			String query = "Select * from project_dtl where project_guide_id=?";
+			String query = "Select * from project_dtl where project_group_id=?";
 
 			PreparedStatement ps = connection.prepareStatement(query);
 
-			ps.setString(1, "1"/* String.valueOf(student.getId()) */);
+			ps.setString(1, projectGroupId);
 
 			rs = ps.executeQuery();
 

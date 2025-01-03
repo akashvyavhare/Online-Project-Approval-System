@@ -59,19 +59,20 @@
 					type="text" name="acadmicyear">
 			</div>
 
-			<div class="element el">
+<!-- 			<div class="element el">
 				<br> <br> <br> <label>Choose Guide</label> <select
 					name="guide">
 					<option value="a">a</option>
 					<option value="b">b</option>
 				</select>
 
-			</div>
+			</div> -->
 			<div class="element">
-				<br> <br> <br> <label>Project Tech</label> <select>
-					<option>ML</option>
-					<option>WEB Technology</option>
-					<option>Robotics</option>
+				<br> <br> <br> <label>Project Tech</label> <select
+					name="project_tech">
+					<option value="ML">ML</option>
+					<option value="WEB-Technology">WEB Technology</option>
+					<option value="Robotics">Robotics</option>
 				</select>
 			</div>
 
@@ -103,7 +104,7 @@
 
 		<form action="../updateproject" method="post"
 			enctype="multipart/form-data">
-			<input type="hidden" name="pid" value="1">
+			<input type="hidden" name="pid" value="<%=project_id%>">
 			<div class="element">
 				<br> <br> <br> <label>Project Name</label> <input
 					type="text" name="projectname"
@@ -122,20 +123,20 @@
 					value="<%=project.getAcadmic_year()%>">
 			</div>
 
-			<div class="element el">
+<!-- 			<div class="element el">
 				<br> <br> <br> <label>Choose Guide</label> <select
 					name="guide">
 					<option value="a">a</option>
 					<option value="b">b</option>
 				</select>
 
-			</div>
+			</div> -->
 			<div class="element">
 				<br> <br> <br> <label>Project Tech</label> <select
 					name="project_tech">
-					<option>ML</option>
-					<option>WEB Technology</option>
-					<option>Robotics</option>
+					<option value="ML">ML</option>
+					<option value="WEB-Technology">WEB Technology</option>
+					<option value="Robotics">Robotics</option>
 				</select>
 			</div>
 

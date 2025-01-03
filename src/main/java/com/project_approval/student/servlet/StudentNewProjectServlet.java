@@ -35,7 +35,7 @@ public class StudentNewProjectServlet extends HttpServlet {
 			String project_name = req.getParameter("projectname");
 			String project_desc = req.getParameter("projectdesc");
 			String acadmic_year = req.getParameter("acadmicyear");
-			String project_guide = req.getParameter("guide");
+			String project_tech = req.getParameter("project_tech");
 			Part project_file = req.getPart("file");
 			String file_Name = project_file.getSubmittedFileName();
 
@@ -48,9 +48,10 @@ public class StudentNewProjectServlet extends HttpServlet {
 			project.setProject_name(project_name);
 			project.setProject_desc(project_desc);
 			project.setAcadmic_year(acadmic_year);
-			project.setProject_guide(project_guide);
+			project.setProject_Technology(project_tech);
 			project.setFile_Name(file_Name);
 			project.setFile_data(filedata);
+			project.setProject_Group(student.getProject_group_id());
 
 			StudentService service = new StudentService();
 			int status = service.proposeNewProject(project);

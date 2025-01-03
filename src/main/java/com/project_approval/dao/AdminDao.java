@@ -56,7 +56,7 @@ public class AdminDao {
 		Student student;
 		connection = DBconnection.getDbConnection();
 
-		String query = "select * from student_dtl ";
+		String query = "select * from student_dtl where project_group_id IS NULL";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 

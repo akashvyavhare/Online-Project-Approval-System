@@ -53,7 +53,7 @@ project = adminService.getAllNewProposeProject();  %>
                 <td><%= p.getProject_status() %></td>
                 <td><input type="text" placeholder="Enter remarks"></td>
                 <td><%= p.getProject_Technology() %></td>
-                <td>2</td>
+                <td><%=p.getProject_Group() %></td>
                 <td><a
 					href="../downloadFile?project_file_name=<%=p.getFile_Name()%>">Download</a></td>
                 <td>

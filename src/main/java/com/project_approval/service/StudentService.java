@@ -90,7 +90,7 @@ public class StudentService {
 		{	
 		StudentDao dao = new StudentDao();
 		
-		rs = dao.getAllProposedProjectByStudent(student);
+		rs = dao.getAllProposedProjectByStudent(student.getProject_group_id());
 		
 		while(rs.next())
 		{

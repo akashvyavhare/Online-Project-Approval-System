@@ -79,7 +79,7 @@
 				<td><%=project.getProject_desc()%></td>
 				<td><%=project.getProject_Technology()%></td>
 				<td><%=project.getAcadmic_year()%></td>
-				<td><%=project.getProject_guide()%></td>
+				<td><%=new UtilityDao().getGuideDetailsById(project.getProject_guide())%></td>
 				<td><%=project.getProject_status()%></td>
 				<td><%=project.getProject_Group()%></td>
 				<td><%=project.getFile_Name()%></td>
@@ -106,10 +106,11 @@
 		List<Student> gruoupMember = dao.getProjecGroupDetails(id);
 	%>
 	<h4>Project Group Details</h4>
+	<h4>Group:- <%="Hash Map" %></h4>
 	<table>
 		<thead>
 			<tr>
-				<th>CRN NO</th>
+				<th>CRN</th>
 				<th>Name</th>
 			</tr>
 		</thead>
