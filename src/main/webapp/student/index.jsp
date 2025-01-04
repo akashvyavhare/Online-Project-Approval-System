@@ -103,7 +103,7 @@
 	String id = request.getParameter("project_group_id");
 	if (id != null) {
 		UtilityDao dao = new UtilityDao();
-		List<Student> gruoupMember = dao.getProjecGroupDetails(id);
+		List<Student> gruoupMember = dao.getProjecGroupMemberDetails(id);
 	%>
 	<h4>Project Group Details</h4>
 	<h4>Group:- <%="Hash Map" %></h4>

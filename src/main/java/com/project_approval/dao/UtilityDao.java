@@ -16,7 +16,7 @@ public class UtilityDao {
 
 	Connection connection;
 
-	public List<Student> getProjecGroupDetails(String id) {
+	public List<Student> getProjecGroupMemberDetails(String id) {
 		connection = DBconnection.getDbConnection();
 		List<Student> groupMember = new ArrayList<Student>();
 		Student student;
@@ -41,6 +41,8 @@ public class UtilityDao {
 		return groupMember;
 
 	}
+	
+	
 
 	public String getDownloadFileName(String project_id, String Project_group_id) {
 		return null;
