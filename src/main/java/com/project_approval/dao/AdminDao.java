@@ -83,6 +83,38 @@ public class AdminDao {
 		return studentList;
 	}
 
+	public List<Student> getAllStudentList() {
+		List<Student> studentList = new ArrayList<Student>();
+		Student student;
+		connection = DBconnection.getDbConnection();
+
+		String query = "select * from student_dtl ";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				student = new Student();
+
+				student.setId(rs.getInt("id"));
+				student.setName(rs.getString("student_name"));
+				student.setCrn(rs.getString("crn_no"));
+				student.setPassword(rs.getString("password"));
+				student.setAcademic_year(rs.getString("academic_year"));
+				student.setDepartment(rs.getString("department"));
+				student.setProject_group_id(rs.getString("project_group_id"));
+
+				studentList.add(student);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return studentList;
+	}
+	
 	public List<Teacher> getAllNewRegisterTeacher() {
 		List<Teacher> teacherList = new ArrayList<Teacher>();
 		Teacher teacher;
@@ -147,6 +179,40 @@ public class AdminDao {
 	}
 
 
+	public List<Project> getAllNewProposeProject() {
+		List<Project> projectList = new ArrayList<Project>();
+		Project project;
+		connection = DBconnection.getDbConnection();
+		String query = "select * from project_dtl where project_status !='complete'";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+			project=new Project();
+			project.setProject_id(rs.getInt("id"));
+			project.setProject_name(rs.getString("project_name"));
+			project.setFile_Name(rs.getString("file_name"));
+			project.setProject_desc(rs.getString("project_desc"));
+			project.setAcadmic_year(rs.getString("acadmic_year"));
+			project.setProject_Group(rs.getString("project_group_id"));
+			project.setProject_guide(rs.getString("project_guide_id"));
+			project.setProject_status(rs.getString("project_status"));
+			project.setProject_Technology(rs.getString("project_technology"));
+			projectList.add(project);
+
+			}
+
+		}
+
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return projectList;
+	}
+
+
 	public boolean createNewProjectGroup(String[] student_list, String projectGroupName) {
 
 		connection = DBconnection.getDbConnection();
@@ -197,37 +263,46 @@ public class AdminDao {
 		return isGroupCreated;
 	}
 
-	public List<Project> getAllNewProposeProject() {
-		List<Project> projectList = new ArrayList<Project>();
-		Project project;
+
+
+	public boolean assignProjectGuide(String tchrId, String projectid) {
 		connection = DBconnection.getDbConnection();
-		String query = "select * from project_dtl";
+		PreparedStatement ps;
+		boolean isAssign = false;
+		int guideAssign = 0;
+		int projectGuideId=0;
+		int projectGuideUpdated=0;
+		
+		System.out.println(5);
 		try {
-			PreparedStatement ps = connection.prepareStatement(query);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-			project=new Project();
-			project.setProject_name(rs.getString("project_name"));
-			project.setFile_Name(rs.getString("file_name"));
-			project.setProject_desc(rs.getString("project_desc"));
-			project.setAcadmic_year(rs.getString("acadmic_year"));
-			project.setProject_Group(rs.getString("project_group_id"));
-			project.setProject_guide(rs.getString("project_guide_id"));
-			project.setProject_status(rs.getString("project_status"));
-			project.setProject_Technology(rs.getString("project_technology"));
-			projectList.add(project);
+			
+				
+				String updateQuery ="UPDATE project_dtl SET project_guide_id = ? where id=?";
+				ps=connection.prepareStatement(updateQuery);
+					
+			   
+				ps.setString(1, tchrId);
+				 ps.setInt(2, Integer.parseInt(projectid));
+			        
+				projectGuideUpdated =ps.executeUpdate();
+				
+				System.out.println(6);
+				
+			
+		} catch (SQLException e) {
 
-			}
-
-		}
-
-		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return projectList;
+
+		if(projectGuideUpdated>0)
+		{
+			return isAssign=true;
+		}
+		
+		return isAssign;
+	}
+	
 	}
 
-	
-}

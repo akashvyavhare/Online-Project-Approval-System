@@ -21,6 +21,7 @@
 		return;
 	}
 
+
 	String status = (String) session.getAttribute("status");
 	if (status != null) {
 		out.print(status);
@@ -88,6 +89,7 @@
 			%>
 		</tbody>
 	</table>
+
 </body>
 </html>
 
