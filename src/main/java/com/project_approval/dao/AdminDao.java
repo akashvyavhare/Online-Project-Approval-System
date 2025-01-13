@@ -146,37 +146,6 @@ public class AdminDao {
 		return projectList;
 	}
 
-	public List<Project> getAllNewProposeProject() {
-		List<Project> projectList = new ArrayList<Project>();
-		Project project;
-		connection = DBconnection.getDbConnection();
-		String query = "select * from project_dtl";
-		try {
-			PreparedStatement ps = connection.prepareStatement(query);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-			project=new Project();
-			project.setProject_name(rs.getString("project_name"));
-			project.setFile_Name(rs.getString("file_name"));
-			project.setProject_desc(rs.getString("project_desc"));
-			project.setAcadmic_year(rs.getString("acadmic_year"));
-			project.setProject_Group(rs.getString("project_group_id"));
-			project.setProject_guide(rs.getString("project_guide_id"));
-			project.setProject_status(rs.getString("project_status"));
-			project.setProject_Technology(rs.getString("project_technology"));
-			projectList.add(project);
-
-			}
-
-		}
-
-		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return projectList;
-	}
 
 	public boolean createNewProjectGroup(String[] student_list, String projectGroupName) {
 
@@ -227,4 +196,38 @@ public class AdminDao {
 		}
 		return isGroupCreated;
 	}
+
+	public List<Project> getAllNewProposeProject() {
+		List<Project> projectList = new ArrayList<Project>();
+		Project project;
+		connection = DBconnection.getDbConnection();
+		String query = "select * from project_dtl";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+			project=new Project();
+			project.setProject_name(rs.getString("project_name"));
+			project.setFile_Name(rs.getString("file_name"));
+			project.setProject_desc(rs.getString("project_desc"));
+			project.setAcadmic_year(rs.getString("acadmic_year"));
+			project.setProject_Group(rs.getString("project_group_id"));
+			project.setProject_guide(rs.getString("project_guide_id"));
+			project.setProject_status(rs.getString("project_status"));
+			project.setProject_Technology(rs.getString("project_technology"));
+			projectList.add(project);
+
+			}
+
+		}
+
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return projectList;
+	}
+
+	
 }
