@@ -1,5 +1,6 @@
 package com.project_approval.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,14 @@ public class AdminService {
 		 return student;	 
 		
 	}
+	public List<Student> getAllStudentList() {
+		List<Student> student =new ArrayList<Student>();
+		AdminDao adminDao =new AdminDao();
+		student = adminDao.getAllStudentList();
+		 return student;	 
+		
+	}
+	
 	public List<Teacher> getAllTeacher(){
 		List<Teacher> teacher =new ArrayList<Teacher>();
 		AdminDao adminDao =new AdminDao();
@@ -59,6 +68,21 @@ public class AdminService {
 		if(isCreated)
 		{
 			msg="Student Group Is Created";
+		}
+		
+		return msg;
+	}
+	
+	public String assignProjectGuide(String tchrId, String project_id){
+		String msg="Fail to Assign guide";
+		System.out.println(2);
+		boolean isAssign = false;
+		isAssign = new AdminDao().assignProjectGuide(tchrId, project_id);
+		
+		if(isAssign)
+		{
+			msg="Project Guide Is Assign Successfully";
+			System.out.println(4);
 		}
 		
 		return msg;

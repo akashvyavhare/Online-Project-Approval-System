@@ -28,7 +28,7 @@
 	List<Student>  student = new ArrayList<Student>();
 	List<Project> project = new ArrayList<Project>();
 	teacher = adminService.getAllTeacher();
-	student = adminService.getAllNewRegisterStudentList();
+	student = adminService.getAllStudentList();
 	project = adminService.getAllNewProposeProject();
 	%>
 	<p>Admin dashboard</p>
@@ -99,6 +99,7 @@
 		</thead>
 		<tbody>
 			<% for (Project p:project){%>
+			<form action="index" method="post">
 			<tr>
 				<td><%= p.getProject_name() %></td>
 				
@@ -111,10 +112,12 @@
 
 				<td><%= p.getProject_Technology() %></td>
 				<td><%= p.getProject_Group() %></td>
-				<td><a href="delete_project">DeleteProject</a></td>
+				<td><button type="submit">DeleteProject</button></td>
 			</tr>
-
-			<%} %>
+		</form>
+			<%
+			} 
+			%>
 
 		</tbody>
 	</table>

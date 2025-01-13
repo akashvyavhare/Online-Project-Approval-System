@@ -27,7 +27,15 @@ AdminService adminService =new AdminService();
 List<Project> project = new ArrayList<Project>();
 List<Teacher> teacher =new ArrayList<Teacher>();
 teacher = adminService.getAllTeacher();
-project = adminService.getAllNewProposeProject();  %>
+project = adminService.getAllNewProposeProject();
+
+String ststusMsg =(String)session.getAttribute("statusMsg");
+if(ststusMsg!=null)
+			{
+			out.print(ststusMsg);
+			session.removeAttribute("statusMsg");
+			}
+			%>
 	 <table>
         <thead>
             <tr>
@@ -45,6 +53,7 @@ project = adminService.getAllNewProposeProject();  %>
         </thead>
         <tbody>
         <% for (Project p:project){%>
+        	<form action="../assignProjectGuide" method="post" >
             <tr>
                 <td><%= p.getProject_name() %></td>
                 
@@ -57,7 +66,7 @@ project = adminService.getAllNewProposeProject();  %>
                 <td><a
 					href="../downloadFile?project_file_name=<%=p.getFile_Name()%>">Download</a></td>
                 <td>
-                     <select name="teacherList" id="teacher list">
+                     <select name="teacherid" id="teacher list">
 			<option value="Teacher List" >Teacher List:</option>
 			
 				<%
@@ -66,7 +75,7 @@ project = adminService.getAllNewProposeProject();  %>
 			
 			for(Teacher tchr: teacher){ %>
 			
-			<option value="<%=  tchr.getTeacher_name()%>">
+			<option value="<%=  tchr.getId()%>">
 					<%=  tchr.getTeacher_name()%>
 					</option> 
 			<%}
@@ -76,10 +85,14 @@ project = adminService.getAllNewProposeProject();  %>
 
 		</select>
                 </td>
-                
-                <td><button class="submit-button">Assign</button></td>
+                <td>
+                <input type="hidden" name="project_id" value="<%= p.getProject_id() %>"></input></td>
+                <td>
+                <button type="submit">Assign</button></td>
             </tr>
+            </form>
             <% } %>
+            
         </tbody>
     </table>
 

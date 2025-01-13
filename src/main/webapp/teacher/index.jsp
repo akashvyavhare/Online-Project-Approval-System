@@ -52,6 +52,7 @@ AdminService adminService =new AdminService();
         </thead>
         <tbody>
           <% for (Project p:project){%>
+          <form action="index" method="post">
             <tr>
                 <td><%= p.getProject_name() %></td>
                 <td><a
@@ -71,6 +72,7 @@ AdminService adminService =new AdminService();
                 <td><%= p.getProject_Group() %></td>
                 <td><button class="submit-button">Submit</button></td>
             </tr>
+            </form>
            <% } %>
         </tbody>
     </table>
