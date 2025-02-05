@@ -3,7 +3,7 @@
 <%@page import="com.project_approval.service.AdminService"%>
 <%@page import="com.project_approval.entity.Project"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,16 +12,20 @@
 </head>
 <body>
 
-	 <h3><p>Project Status</p></h3>
-	 </body>
-	 
-	 <body>
-<div>
-	 <a style="float: right" href="index.jsp">Back to Admin Desktop</a>
-</div><br><br>
-<br>
-<hr>
-<% 
+	<h3>
+		<p>Project Status</p>
+	</h3>
+</body>
+
+<body>
+	<div>
+		<a style="float: right" href="index.jsp">Back to Admin Desktop</a>
+	</div>
+	<br>
+	<br>
+	<br>
+	<hr>
+	<% 
 AdminService adminService =new AdminService();
 List<Project> project = new ArrayList<Project>();
 project = adminService.getAllCompleteProject();
@@ -42,6 +46,7 @@ project = adminService.getAllCompleteProject();
 		</thead>
 		<tbody>
 			<% for (Project p:project){%>
+			<form action="../viewStatus" method="post">
 			<tr>
 				<td><%= p.getProject_name() %></td>
 				<td><a
@@ -51,9 +56,11 @@ project = adminService.getAllCompleteProject();
 				<td><%= p.getProject_status() %></td>
 				<td><%= p.getProject_Technology() %></td>
 				<td><%= p.getProject_Group() %></td>
-				<td><a href="#">Approve/reject</a></td>
+				<td><button type="submit">RejectProject</button></td>
 			</tr>
-
+			</form>
 			<% } %>
+		</tbody>
+	</table>
 </body>
 </html>

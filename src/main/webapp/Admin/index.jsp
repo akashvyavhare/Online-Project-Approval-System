@@ -29,7 +29,7 @@
 	List<Student>  student = new ArrayList<Student>();
 	List<Project> project = new ArrayList<Project>();
 	teacher = adminService.getAllTeacher();
-	student = adminService.getAllNewRegisterStudentList();
+	student = adminService.getAllStudentList();
 	project = adminService.getAllNewProposeProject();
 	ProjectApprovalUitility projectApprovalUitility= new ProjectApprovalUitility();
 	%>
@@ -93,7 +93,6 @@
 				<th>Project Year</th>
 				<th>Project Guide</th>
 				<th>Project Status</th>
-
 				<th>Project Tech</th>
 				<th>Project Group</th>
 				<th>Action</th>
@@ -101,6 +100,7 @@
 		</thead>
 		<tbody>
 			<% for (Project p:project){%>
+			<form action="index" method="post">
 			<tr>
 				<td><%= p.getProject_name() %></td>
 				
@@ -110,13 +110,14 @@
 				<td><%= p.getAcadmic_year() %></td>
 				<td><%= p.getProject_guide() %></td>
 				<td><%= p.getProject_status() %></td>
-
 				<td><%= p.getProject_Technology() %></td>
 				<td><%= projectApprovalUitility.getProjectGroupById(p.getProject_Group())==null ? "No Group":projectApprovalUitility.getProjectGroupById(p.getProject_Group()).getGroupCode() %></td>
 				<td><a href="delete_project">DeleteProject</a></td>
 			</tr>
-
-			<%} %>
+		</form>
+			<%
+			} 
+			%>
 
 		</tbody>
 	</table>
