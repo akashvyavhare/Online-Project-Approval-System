@@ -1,4 +1,5 @@
 
+<%@page import="com.project_approval.utility.ProjectApprovalUitility"%>
 <%@page import="com.project_approval.entity.Project"%>
 <%@page import="com.project_approval.entity.Student"%>
 <%@page import="com.project_approval.entity.Teacher"%>
@@ -30,6 +31,7 @@
 	teacher = adminService.getAllTeacher();
 	student = adminService.getAllNewRegisterStudentList();
 	project = adminService.getAllNewProposeProject();
+	ProjectApprovalUitility projectApprovalUitility= new ProjectApprovalUitility();
 	%>
 	<p>Admin dashboard</p>
 	<%="Admin Name = " + admin.getUser_name()%>
@@ -110,7 +112,7 @@
 				<td><%= p.getProject_status() %></td>
 
 				<td><%= p.getProject_Technology() %></td>
-				<td><%= p.getProject_Group() %></td>
+				<td><%= projectApprovalUitility.getProjectGroupById(p.getProject_Group())==null ? "No Group":projectApprovalUitility.getProjectGroupById(p.getProject_Group()).getGroupCode() %></td>
 				<td><a href="delete_project">DeleteProject</a></td>
 			</tr>
 

@@ -1,3 +1,4 @@
+<%@page import="com.project_approval.utility.ProjectApprovalUitility"%>
 <%@page import="com.project_approval.dao.UtilityDao"%>
 <%@page import="com.project_approval.service.TeacherService"%>
 <%@page import="java.util.List"%>
@@ -26,6 +27,8 @@
 		out.print(status);
 		session.removeAttribute("status");
 	}
+	
+	ProjectApprovalUitility projectApprovalUitility= new ProjectApprovalUitility();
 	%>
 	<h1>Teacher Dashboard</h1>
 
@@ -77,7 +80,8 @@
 				<td><input type="text" name="comment"
 					placeholder="Enter remarks"></td>
 				<td><%=p.getProject_Technology()%></td>
-				<td><%=p.getProject_Group()%></td>
+				<td><%=projectApprovalUitility.getProjectGroupById(p.getProject_Group())==null ? "No Group":projectApprovalUitility.getProjectGroupById(p.getProject_Group()).getGroupCode()
+						%></td>
 				<input type="hidden" name="project_id"
 					value="<%=p.getProject_id()%>">
 				<td><button type="submit">Submit</button></td>

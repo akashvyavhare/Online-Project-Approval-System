@@ -1,3 +1,4 @@
+<%@page import="com.project_approval.utility.ProjectApprovalUitility"%>
 <%@page import="com.project_approval.dao.UtilityDao"%>
 <%@page import="com.project_approval.entity.Project"%>
 <%@page import="java.util.List"%>
@@ -26,6 +27,7 @@
 
 	StudentService service = new StudentService();
 	List<Project> projectSList = service.getProposedProject(student);
+	ProjectApprovalUitility projectApprovalUitility= new ProjectApprovalUitility();
 	%>
 	<p>Student dashboard</p>
 	<a style="float: right" href="../studentLogout">Logout</a>
@@ -81,7 +83,7 @@
 				<td><%=project.getAcadmic_year()%></td>
 				<td><%=new UtilityDao().getGuideDetailsById(project.getProject_guide())%></td>
 				<td><%=project.getProject_status()%></td>
-				<td><%=project.getProject_Group()%></td>
+				<td><%= projectApprovalUitility.getProjectGroupById(project.getProject_Group())==null ? "No Group":projectApprovalUitility.getProjectGroupById(project.getProject_Group()).getGroupCode()%></td>
 				<td><%=project.getFile_Name()%></td>
 				<td><a
 					href="../downloadFile?project_id=<%=project.getProject_id()%>&project_group_id=<%=project.getProject_Group()%>&project_file_name=<%=project.getFile_Name()%>">Download</a>
@@ -106,7 +108,7 @@
 		List<Student> gruoupMember = dao.getProjecGroupMemberDetails(id);
 	%>
 	<h4>Project Group Details</h4>
-	<h4>Group:- <%="Hash Map" %></h4>
+	<h4>Group:- <%=projectApprovalUitility.getProjectGroupById(id)==null ? "No Group":projectApprovalUitility.getProjectGroupById(id).getGroupCode() %></h4>
 	<table>
 		<thead>
 			<tr>

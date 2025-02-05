@@ -6,7 +6,9 @@ import java.nio.file.Paths;
 
 import javax.servlet.http.Part;
 
+import com.project_approval.dao.UtilityDao;
 import com.project_approval.entity.Project;
+import com.project_approval.entity.ProjectGroup;
 
 public class ProjectApprovalUitility {
 
@@ -68,5 +70,16 @@ public class ProjectApprovalUitility {
 		}
 		return uploadStatus;
 	}
+	
+	
+	public ProjectGroup getProjectGroupById(String id)
+	{
+		int ProjectGroupId = Integer.parseInt(id==null?"0":id);
+		ProjectGroup projectGroup = new UtilityDao().getProjectGroupById(ProjectGroupId);
+		
+		return projectGroup;
+	}
+	
+	
 
 }
