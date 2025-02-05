@@ -20,8 +20,8 @@ JSP
 Backend --
 JAVA (1.8)
 Maven Project Facet --> Dynamic Web module -->4.0
-Servlet
-JDBC
+Servlet --> HTTP REQUEST HANDLING
+JDBC  -->  INTERACT WITH DATABASE
 
 Database -
 MySQL / Oracle 
@@ -33,7 +33,7 @@ Framework-
 Hibernate
 Spring boot
 Rest API 
-Angular
+Angular/REACT
 
 
 ------------------- 
@@ -85,6 +85,7 @@ name
 CRN no
 pass
 dept
+college id
 semester year
 
 - user login 
@@ -97,6 +98,7 @@ name
 teacher id
 password
 dept
+college_id
 
 teacher login
 - teacher id
@@ -111,8 +113,40 @@ admin registration
 - college id
 - password 
 
+college
+id 
+name 
+college id
+city
+
+project
+id 
+name
+ppt file
+
 
 ----------------------
+
+teacher task 
+project approve or reject
+project idea feedback or improvement
+assign group to student 
+
+student task
+add new project 
+view all project 
+
+
+
+student have group id 
+project hava group id
+project have guide id
+
+
+tecacher 
+
+
+
 
 
 

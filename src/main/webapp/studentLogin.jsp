@@ -36,9 +36,17 @@ body {
 <%@include file="component/navbar.jsp" %>
 	<div id="container">
 		<h2>Student Login</h2>
-		<form action="#" method="post">
+		<% 
+		String msg = (String)session.getAttribute("msg"); 
+		if(msg!=null)
+		{
+			out.print(msg);
+			session.removeAttribute("msg");
+		}
+		%>
+		<form action="studentLogin" method="post">
 			<div class="field">
-				<input type="text" placeholder="username" name="username">
+				<input type="text" placeholder="CRN No" name="username">
 			</div>
 			<div class="field">
 				<input style="" type="text" placeholder="password" name="password">
@@ -46,6 +54,7 @@ body {
 			<div class="field">
 				<button type="submit">Login</button>
 			</div>
+			<p>Create account <a href="studentRegister.jsp">click here</a></p>
 		</form>
 	</div>
 </body>

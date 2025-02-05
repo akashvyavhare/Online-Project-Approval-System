@@ -1,3 +1,55 @@
 
 mysql db -v 8
 schema name  - project_approval
+
+
+CREATE TABLE `admin_dtl` (
+  `id` int NOT NULL,
+  `college_id` varchar(45) DEFAULT NULL,
+  `use` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+
+
+
+CREATE TABLE `college_dtl` (
+  `id` int NOT NULL,
+  `college_code` varchar(45) DEFAULT NULL,
+  `college_name` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `project_dtl` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `project_name` varchar(45) DEFAULT NULL,
+  `file_name` varchar(45) DEFAULT NULL,
+  `student_id` varchar(45) DEFAULT NULL,
+  `project_desc` varchar(45) DEFAULT NULL,
+  `project_guide` varchar(45) DEFAULT NULL,
+  `project_group_id` varchar(45) DEFAULT NULL,
+  `acadmic_year` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+
+CREATE TABLE `student_dtl` (
+  `id` int DEFAULT NULL,
+  `student_name` varchar(45) DEFAULT NULL,
+  `crn_no` varchar(50) DEFAULT NULL,
+  `Password` varchar(45) DEFAULT NULL,
+  `department` varchar(45) DEFAULT NULL,
+  `academic_year` int DEFAULT NULL
+) ;
+
+
+CREATE TABLE `teacher_dtl` (
+  `id` int DEFAULT NULL,
+  `teacher_name` varchar(45) DEFAULT NULL,
+  `teacher_id` int DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `department` varchar(45) DEFAULT NULL
+);
