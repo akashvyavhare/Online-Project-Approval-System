@@ -29,33 +29,37 @@ body {
 	padding: .5%;
 }
 </style>
-<%@ include file="component/bootstrap-cdn.jsp" %>
+<%@ include file="component/bootstrap-cdn.jsp"%>
 </head>
 
 <body>
-<%@include file="component/navbar.jsp" %>
+	<%@include file="component/navbar.jsp"%>
 	<div id="container">
 		<h2>Teacher Login</h2>
-		<% 
-		String msg = (String)session.getAttribute("msg"); 
-		if(msg!=null)
-		{
+		<%
+		String msg = (String) session.getAttribute("msg");
+		if (msg != null) {
 			out.print(msg);
 			session.removeAttribute("msg");
 		}
 		%>
 		<form action="teacherlogin" method="post">
 			<div class="field">
-				<input type="text" placeholder="username" name="username">
+				<input type="text" placeholder="username" name="username" required>
 			</div>
 			<div class="field">
-				<input style="" type="text" placeholder="password" name="password">
+				<input style="" type="text" placeholder="password" name="password"
+					pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+					title="Password must be at least 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character. No spaces allowed."
+					required>
 			</div>
 			<div class="field">
 				<button type="submit">Login</button>
 			</div>
-			
-			<p>Create account <a href="teacherRegister.jsp">click here</a></p>
+
+			<p>
+				Create account <a href="teacherRegister.jsp">click here</a>
+			</p>
 		</form>
 	</div>
 </body>

@@ -59,14 +59,7 @@
 					type="text" name="acadmicyear">
 			</div>
 
-<!-- 			<div class="element el">
-				<br> <br> <br> <label>Choose Guide</label> <select
-					name="guide">
-					<option value="a">a</option>
-					<option value="b">b</option>
-				</select>
 
-			</div> -->
 			<div class="element">
 				<br> <br> <br> <label>Project Tech</label> <select
 					name="project_tech">
@@ -123,14 +116,7 @@
 					value="<%=project.getAcadmic_year()%>">
 			</div>
 
-<!-- 			<div class="element el">
-				<br> <br> <br> <label>Choose Guide</label> <select
-					name="guide">
-					<option value="a">a</option>
-					<option value="b">b</option>
-				</select>
 
-			</div> -->
 			<div class="element">
 				<br> <br> <br> <label>Project Tech</label> <select
 					name="project_tech">
