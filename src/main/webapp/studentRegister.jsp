@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.lang.*" %>
+<%@ page import="java.lang.*"%>
 <!DOCTYPE html>
 <html>
 
@@ -47,19 +47,32 @@ body {
 		%>
 		<form action="student_register" method="post">
 			<div class="field">
-				<input type="text" placeholder="username" name="username">
+				<input type="text" placeholder="username" name="username"
+					pattern="[A-Za-z\s]{3,}"
+					title="Username must contain only letters. Min: 3, Max:30 characters."
+					required>
 			</div>
 			<div class="field">
-				<input style="" type="text" placeholder="CRN_NO" name="CRN_NO">
+				<input style="" type="text" placeholder="CRN_NO" name="CRN_NO"
+					pattern="[0-9a-zA-Z]{10,1}"
+					title="CRN Number must be exactly 10 digits." required>
 			</div>
 			<div class="field">
-				<input type="text" placeholder="password" name="password">
+				<input type="text" placeholder="password" name="password"
+					pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+					title="Password must be at least 8 characters long and include 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character. No spaces allowed."
+					required>
 			</div>
 			<div class="field">
-				<input type="text" placeholder="department" name="department">
+				<input type="text" placeholder="department" name="department"
+					pattern="[A-Za-z\s]{3,}"
+					title="Only letters allowed. Min: 3 characters." required>
 			</div>
 			<div class="field">
-				<input type="text" placeholder="academic_year" name="academic_year">
+				<input type="text" placeholder="academic_year" name="academic_year"
+					pattern="20[0-9]{2}"
+					title="Enter a valid academic year (e.g., 2023, 2024, etc.)."
+					required>
 			</div>
 
 			<div class="field">
